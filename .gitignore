@@ -1,5 +1,8 @@
 .vagrant/
 *.swp
+*.o
+
+socketapi/socketapi
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
