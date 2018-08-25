@@ -10,21 +10,8 @@ Vagrant.configure("2") do |config|
 	# boxes at https://atlas.hashicorp.com/search.
 	config.vm.box = "segment-routing/sigcomm-2018-hackhaton"
 
-	config.vm.synced_folder ".", "/home/vagrant/SR-ICMP-router"
-
-	config.vm.provision "shell", inline: <<-SHELL
-		if ! which puppet; then
-			apt-get update
-			apt-get install -y puppet-common
-		fi
-	SHELL
-
-	config.vm.provision "puppet" do |puppet|
-		puppet.options = "--verbose --debug --parser future"
-	end
-
 	config.vm.provider "virtualbox" do |v|
-		v.name = "srv6-rerouting"
+		v.name = "srv6-sigcomm-2018-hackathon"
 		v.customize ["modifyvm", :id, "--cpus", "4"]
 		v.customize ["modifyvm", :id, "--memory", "2048"]
 	end
